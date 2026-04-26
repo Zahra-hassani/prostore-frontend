@@ -9,21 +9,27 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { CircleUserRound, EllipsisVertical, ShoppingCart } from "lucide-react";
+import {
+  CircleUserRound,
+  EllipsisVertical,
+  MenuIcon,
+  ShoppingCart,
+} from "lucide-react";
 import { Input } from "@/components/ui/input";
+import SearchInput from "./SearchInput";
 
 function Menu() {
   return (
     <div className="flex justify-end gap-3">
-      <nav className="hidden lg:flex max-w-xs gap-1">
-        <Input placeholder="Search here..." />
+      <nav className="hidden md:flex w-full max-w-lg gap-1">
+        <SearchInput />
         <Theme />
-        <Button variant="ghost">
+        <Button asChild variant="ghost">
           <Link href="/cart" className="flex gap-2 items-center">
             <ShoppingCart /> Cart
           </Link>
         </Button>
-        <Button variant="default">
+        <Button asChild variant="default">
           <Link href="/sign-in" className="flex gap-2 items-center">
             <CircleUserRound /> Sign in
           </Link>
@@ -32,11 +38,11 @@ function Menu() {
       <nav className="md:hidden">
         <Sheet>
           <SheetTrigger className="align-middle">
-            <EllipsisVertical />
+            <MenuIcon />
           </SheetTrigger>
-          <SheetContent className="flex flex-col items-start gap-1 pl-3">
+          <SheetContent className="flex flex-col items-start gap-8 pl-3">
             <SheetTitle>Menu</SheetTitle>
-            <Input placeholder="Search here..." />
+            <SearchInput />
             <Theme />
             <Button variant="ghost">
               <Link href="/cart">Cart</Link>

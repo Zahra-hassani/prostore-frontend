@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 // import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Geist, Figtree } from "next/font/google";
+import { Figtree, Inter } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { APP_DESCRIPTION, APP_NAME } from "@/constants";
 import Footer from "@/components/ui/footer";
 import { ThemeProvider } from "next-themes";
-import Header from "@/components/Share/Header";
 
-const figtree = Figtree({ subsets: ["latin"], variable: "--font-sans" });
+const figtree = Figtree({subsets:['latin'],variable:'--font-sans'});
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -38,9 +38,14 @@ export default function RootLayout({
     <html
       suppressHydrationWarning
       lang="en"
-      className={cn("h-full", "antialiased", "font-sans", figtree.variable)}
+      className={cn(
+        "h-full",
+        "antialiased",
+        "font-sans",
+        figtree.variable,
+        inter.variable,
+      )}
     >
-      <Header />
       <body className="min-h-full flex flex-col">
         <ThemeProvider
           attribute="class"

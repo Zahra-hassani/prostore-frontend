@@ -5,6 +5,7 @@ import {
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuLabel,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Moon, Sun, SunMoon } from "lucide-react";
@@ -22,8 +23,11 @@ function Theme() {
   }
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className="focus-visible:ring-0 focus-visible:ring-offset-0">
-        <Button variant="ghost">
+      <DropdownMenuTrigger asChild>
+        <Button
+          variant="ghost"
+          className="focus-visible:ring-0 text-xl focus-visible:ring-offset-0"
+        >
           {theme === "light" ? (
             <Sun />
           ) : theme === "dark" ? (
@@ -34,23 +38,27 @@ function Theme() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <DropdownMenuLabel>Apearence</DropdownMenuLabel>
+        <DropdownMenuLabel>Appearence</DropdownMenuLabel>
+        <DropdownMenuSeparator />
         <DropdownMenuCheckboxItem
           checked={theme === "light"}
           onClick={() => setTheme("light")}
         >
+          <Sun />
           Light
         </DropdownMenuCheckboxItem>
         <DropdownMenuCheckboxItem
           checked={theme === "dark"}
           onClick={() => setTheme("dark")}
         >
+          <Moon />
           Dark
         </DropdownMenuCheckboxItem>
         <DropdownMenuCheckboxItem
           checked={theme === "system"}
           onClick={() => setTheme("system")}
         >
+          <SunMoon />
           System
         </DropdownMenuCheckboxItem>
       </DropdownMenuContent>

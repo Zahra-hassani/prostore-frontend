@@ -1,3 +1,4 @@
+import Header from "@/components/Share/Header";
 import { APP_DESCRIPTION } from "@/constants";
 import type { Metadata } from "next";
 
@@ -13,6 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <div className="flex flex-col h-screen">
+      <Header />
       <main className="wrapper flex-1">{children}</main>
     </div>
   );
