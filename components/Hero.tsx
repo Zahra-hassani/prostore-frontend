@@ -14,7 +14,7 @@ function Hero() {
     slidesToScroll: 1,
     cssEase: "linear",
     speed: 200,
-    autoplaySpeed: 1000,
+    autoplaySpeed: 3000,
   };
   return (
     <div className="h-72 w-full">

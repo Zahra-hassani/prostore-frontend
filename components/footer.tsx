@@ -7,7 +7,7 @@ function Footer() {
     <div>
       <footer className="w-full border-t">
         <div className="text-lg flex justify-center items-center wrapper p-5 text-black/60">
-          {currentYear} &copy;{APP_NAME} All rights reserved.
+          @{currentYear} {APP_NAME} &copy;All rights reserved.
         </div>
       </footer>
     </div>
