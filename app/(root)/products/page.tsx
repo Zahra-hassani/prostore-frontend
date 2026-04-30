@@ -1,4 +1,5 @@
 import { getProducts } from "@/actions/product.action";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { productInfo } from "@/types/product";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,21 +14,24 @@ async function page() {
       <h1>All Products</h1>
       <div className="grid grid-cols-1 w-full md:grid-cols-4 gap-4 p-4">
         {products.map((product, index) => (
-          <Link
-            key={index}
-            href={`products/${product.id}`}
-            className="border p-3 rounded-xl"
-          >
-            {/* <Image
-              src={`storage/${product.images[0].img_url}`}
-              alt="Product image"
-              height={900}
-              width={900}
-              className="w-full rounded-xl"
-            /> */}
-            <h1 className="font-bold">{product.name}</h1>
-            <p>{product.brand}</p>
-          </Link>
+          <Card key={index}>
+            <CardHeader className="h-64 w-full">
+              <Link href={`products/${product.id}`}>
+                <Image
+                  src={`http://localhost:8000/storage/${product.images[0].img_url}`}
+                  alt="Product image"
+                  height={300}
+                  width={300}
+                  className="w-full h-full object-cover rounded"
+                  unoptimized
+                />
+              </Link>
+            </CardHeader>
+            <CardContent>
+              <p>{product.brand}</p>
+              <h1 className="font-bold">{product.name}</h1>
+            </CardContent>
+          </Card>
         ))}
       </div>
     </div>

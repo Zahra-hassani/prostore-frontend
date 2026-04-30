@@ -6,15 +6,18 @@ import React from "react";
 function ProductCard({ product }: { product: any }) {
   return (
     <Card>
-      <CardHeader>
+      <CardHeader className="h-64 w-full">
         <Link href={`products/${product.id}`}>
           <Image
-            src={`/public/storage/${product.images[0].img_url}`}
+            src={`http://localhost:8000/storage/${product.images[0].img_url}`}
             alt={product.name}
             height={300}
             width={300}
+            className="h-full w-full object-cover"
+            unoptimized
           />
         </Link>
+        {/* laravel filament */}
       </CardHeader>
       <CardContent className="p-4 grid gap-2">
         <span className="text-xs font-normal">{product.brand}</span>

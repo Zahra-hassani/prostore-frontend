@@ -10,9 +10,18 @@ async function page({ params }: { params: Promise<{ id: string }> }) {
   console.log(data);
   return (
     <div className="h-screen w-full p-4 flex justify-center items-center">
-      <div className="grid grid-cols-1 md:grid-cols-2">
-        <div>{/* image */}</div>
-        <div className="space-y-3">
+      <div className="grid w-3/4 grid-cols-1 md:grid-cols-2">
+        <div className="h-72 w-full overflow-hidden">
+          <Image
+            src={`http://localhost:8000/storage/${product.images[0].img_url}`}
+            alt={product.name}
+            height={500}
+            width={500}
+            unoptimized
+            className="h-full w-full rounded"
+          />
+        </div>
+        <div className="space-y-3 p-3">
           {/* <h1>{id}</h1> */}
           <h1>
             Product name:{" "}
