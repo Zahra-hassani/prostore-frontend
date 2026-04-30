@@ -14,10 +14,10 @@ function Hero() {
     slidesToScroll: 1,
     cssEase: "linear",
     speed: 200,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 2500,
   };
   return (
-    <div className="h-72 w-full">
+    <div className=" w-full">
       <Slider {...settings}>
         <div>
           <Image

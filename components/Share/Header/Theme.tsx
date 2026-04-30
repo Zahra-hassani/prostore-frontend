@@ -26,7 +26,7 @@ function Theme() {
       <DropdownMenuTrigger asChild>
         <Button
           variant="ghost"
-          className="focus-visible:ring-0 text-xl focus-visible:ring-offset-0"
+          className="focus-visible:ring-0 rounded-full text-xl focus-visible:ring-offset-0"
         >
           {theme === "light" ? (
             <Sun />
