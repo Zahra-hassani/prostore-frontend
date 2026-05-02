@@ -2,18 +2,19 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import ProductPrice from "./product-price";
 
 function ProductCard({ product }: { product: any }) {
   return (
     <Card>
-      <CardHeader className="h-64 w-full">
+      <CardHeader className="h-72 w-full p-0">
         <Link href={`products/${product.id}`}>
           <Image
             src={`http://localhost:8000/storage/${product.images[0].img_url}`}
             alt={product.name}
             height={300}
             width={300}
-            className="h-full w-full object-cover"
+            className="h-full w-full object-cover rounded"
             unoptimized
           />
         </Link>
@@ -23,7 +24,8 @@ function ProductCard({ product }: { product: any }) {
         <span className="text-xs font-normal">{product.brand}</span>
         <span className="text-sm font-medium">{product.name}</span>
         <div className="flex-between">
-          <span>${product.price}</span>
+          <span>4/5 Stars</span>
+          <ProductPrice price={product.price.toString()} />
         </div>
       </CardContent>
     </Card>

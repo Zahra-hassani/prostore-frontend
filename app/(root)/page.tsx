@@ -8,7 +8,7 @@ export default async function Home() {
   return (
     <div>
       <Hero />
-      <ProductsList products={products} title="Newest Arrivals" />
+      <ProductsList limit={4} products={products} title="Newest Arrivals" />
     </div>
   );
 }
