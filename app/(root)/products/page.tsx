@@ -1,19 +1,26 @@
 import { getProducts } from "@/actions/product.action";
+import ProductPrice from "@/components/Share/Products/product-price";
+import ProductsList from "@/components/Share/Products/Products-list";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { productInfo } from "@/types/product";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-async function page() {
+async function page({
+  searchParams,
+}: {
+  searchParams: Promise<{ page: string }>;
+}) {
+  const { page } = await searchParams;
   const data = await getProducts();
   const products: productInfo[] = data.data;
+  const totalPage = data.meta.links;
   //   console.log(data.data[0].images[0]);
   return (
     <div>
-      <h1>All Products</h1>
-      <div className="grid grid-cols-1 w-full md:grid-cols-4 gap-4 p-4">
-        {products.map((product, index) => (
+      {/* <div className="grid grid-cols-1 w-full md:grid-cols-4 gap-4 p-4"> */}
+      {/* {products.map((product) => (
           <Card key={index}>
             <CardHeader className="h-64 w-full">
               <Link href={`products/${product.id}`}>
@@ -30,10 +37,15 @@ async function page() {
             <CardContent>
               <p>{product.brand}</p>
               <h1 className="font-bold">{product.name}</h1>
+              <div className="flex-between">
+                <span>4/5 Stars</span>
+                <ProductPrice price={product.price.toString()} />
+              </div>
             </CardContent>
           </Card>
-        ))}
-      </div>
+        ))} */}
+      <ProductsList products={data} page={page} />
+      {/* </div> */}
     </div>
   );
 }
