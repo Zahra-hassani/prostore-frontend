@@ -29,19 +29,9 @@ function ProductsList({
             ))}
       </div>
       <div className="w-full flex-center">
-        {products.meta.links
-          .slice(1, products.meta.links.length - 1) // Slice to remove 'Previous'/'Next'
-          .map((page: any, index: number) => (
-            <Link
-              key={page.label || index}
-              href={`/products?page=${page.label}`}
-            >
-              <Button>{page.label}</Button>
-            </Link>
-          ))}
-      </div>
-      <div className="w-full flex-center">
-        <Button>View All Products</Button>
+        <Button>
+          <Link href="/products">View All Products</Link>
+        </Button>
       </div>
     </div>
   );
