@@ -7,10 +7,10 @@ function ProductImage({ img }: { img: any[] }) {
   console.log(img);
   const [currentIndex, setCurrentIndex] = useState(0);
   return (
-    <div className="w-full space-y-4">
-      <div className="w-fit mx-auto h-94">
+    <div className="w-full h-fit">
+      <div className="w-fit mx-auto h-96">
         <Image
-          className="h-full"
+          className="h-full rounded"
           src={`http://localhost:8000/storage/${img[currentIndex].img_url}`}
           alt="Product image"
           height={1000}

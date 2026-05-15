@@ -1,6 +1,9 @@
 import { getSingleProduct } from "@/actions/product.action";
+import { getReviews } from "@/actions/review.action";
 import ProductImage from "@/components/Share/Products/Product-image";
 import ProductPrice from "@/components/Share/Products/product-price";
+import ProductReviews from "@/components/Share/Products/product-reviews";
+import ReviewForm from "@/components/Share/Products/review-form";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -11,16 +14,19 @@ async function page({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const response = await fetch(`http://localhost:8000/api/products/${id}`);
   const data = await response.json();
+  const reviews = await getReviews();
   const product = data.data;
-  // console.log(data);
+  const foundedReviews = reviews.data.filter(
+    (r: any) => r.product_id === product.id,
+  );
+  console.log(foundedReviews);
   return (
-    <div className="h-screen w-full p-4">
+    <div className="w-full p-4">
       <div className="w-full grid grid-cols-1 md:grid-cols-5">
-        <div className="h-80 w-full col-span-2">
+        <div className="h-full w-full col-span-2">
           <ProductImage img={product.images} />
         </div>
         <div className="space-y-3 col-span-2 p-3">
-          {/* <h1>{id}</h1> */}
           <h1 className="flex gap-3 items-center">
             Product name:
             <span className="font-semibold text-xl">{product.name}</span>
@@ -51,6 +57,12 @@ async function page({ params }: { params: Promise<{ id: string }> }) {
             {product.stock > 0 ? <Button>Add To Cart</Button> : ""}
           </CardContent>
         </Card>
+      </div>
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 p-2">
+        <ProductReviews reviews={foundedReviews} limit={2} />
+        <div>
+          <ReviewForm />
+        </div>
       </div>
     </div>
   );

@@ -28,6 +28,11 @@ function AllProductsList({ title }: { title?: string }) {
             <ProductCard key={product.id} product={product} />
           ))}
       </div>
+      <div className="w-fit p-3">
+        <span className="font-light text-base">
+          Page {list?.meta.current_page} of {list?.meta.last_page}
+        </span>
+      </div>
       <div className="w-full max-w-sm mx-auto flex-between">
         {list.meta.links.map((link: any) => (
           <Button
