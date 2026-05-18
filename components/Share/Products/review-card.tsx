@@ -22,20 +22,26 @@ function ReviewCard({ review }: { review: any }) {
       </div>
       <div className="flex justify-between flex-col items-end">
         <div className="flex">
-          {Array.from({ length: 5 }, (_, index) => (
-            <span key={index} className="inline">
-              <Star
-                className={cn(
-                  review.rating - 1 >= index
-                    ? "text-yellow-500 bg-clip-text fill-yellow-500"
-                    : "fill-stone-300 text-stone-300",
-                )}
-              />
-            </span>
-          ))}
+          {Array.from({ length: 5 }, (_, index) => {
+            let fill =
+              Math.max(Math.min(review.rating - index * 2, 1) / 2, 0) * 100;
+            return (
+              <div key={index} className="relative">
+                <span className="w-6 h-6">
+                  <Star className="text-yellow-500" />
+                </span>
+                <span
+                  className="w-6 h-6 absolute top-0 left-0 overflow-hidden"
+                  style={{ width: `${fill}%` }}
+                >
+                  <Star className="text-yellow-500 fill-yellow-500" />
+                </span>
+              </div>
+            );
+          })}
         </div>
         <span className="text-muted-foreground mt-auto text-xs">
-          {formatDistanceToNow(review.created_at)}
+          {formatDistanceToNow(review.created_at)} ago
         </span>
       </div>
     </div>
