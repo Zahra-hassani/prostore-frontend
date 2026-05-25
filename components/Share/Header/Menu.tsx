@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import SearchInput from "./SearchInput";
+import UserButton from "./user-button";
 
 function Menu() {
   return (
@@ -29,11 +30,7 @@ function Menu() {
             <ShoppingCart /> Cart
           </Link>
         </Button>
-        <Button asChild variant="default">
-          <Link href="/sign-in" className="flex gap-2 items-center">
-            <CircleUserRound /> Sign in
-          </Link>
-        </Button>
+        <UserButton />
       </nav>
       <nav className="md:hidden">
         <Sheet>
@@ -47,9 +44,7 @@ function Menu() {
             <Button variant="ghost">
               <Link href="/cart">Cart</Link>
             </Button>
-            <Button variant="default">
-              <Link href="/sign-in">Sign in</Link>
-            </Button>
+            <UserButton />
             <SheetDescription></SheetDescription>
           </SheetContent>
         </Sheet>

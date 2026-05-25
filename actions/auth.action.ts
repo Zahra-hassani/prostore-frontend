@@ -11,3 +11,15 @@ export default async function login(prevState: unknown, formData: FormData) {
   console.log(response);
   return response;
 }
+
+export async function getUser(token: string) {
+  const data = await fetch(`http://localhost:8000/api/user`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      accept: "application/json",
+    },
+  });
+  const response = await data.json();
+  console.log(response);
+  return response;
+}
