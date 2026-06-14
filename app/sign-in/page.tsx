@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { useActionState } from "react";
 
 export default function LoginPage() {
@@ -19,6 +20,12 @@ export default function LoginPage() {
     data: "",
     success: false,
   });
+  if (state.data !== "Something went wrong") {
+    localStorage.setItem("token", state.data);
+  }
+  if (state.success) {
+    return redirect("/");
+  }
   return (
     <div className="min-h-screen w-full flex justify-center items-center">
       <Card className="w-full max-w-sm">
@@ -40,48 +47,27 @@ export default function LoginPage() {
                   placeholder="m@example.com"
                   required
                 />
-                {state.errors && (
-                  <div className="text-sm text-red-500 flex gap-4 flex-wrap">
-                    {state.errors?.email?.map((x: string, index: number) => (
-                      <div className="p-4" key={index}>
-                        {x}
-                      </div>
-                    ))}
-                  </div>
-                )}
               </div>
               <div className="grid gap-2">
                 <div className="flex items-center">
                   <label htmlFor="password">Password</label>
                   <a
                     href="#"
-                    className="ml-auto inline-block text-sm underline-offset-0 hover:outline"
+                    className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
                   >
                     Forgot your password?
                   </a>
                 </div>
                 <Input id="password" name="password" type="password" required />
-                {state.errors && (
-                  <div className="text-sm text-red-500 flex gap-4 flex-wrap">
-                    {state.errors?.password?.map((x: string, index: number) => (
-                      <div className="p-4" key={index}>
-                        {x}
-                      </div>
-                    ))}
-                  </div>
-                )}
               </div>
             </div>
           </CardContent>
-          <CardFooter className="flex-col gap-2">
+          <CardFooter className="flex-col gap-2 py-2">
             <Button type="submit" className="w-full">
               Login
             </Button>
-            <Button variant="ghost" className="w-full hover:bg-transparent">
-              Already Have an account?
-              <Link className="link underline" href="sign-up">
-                Sign Up
-              </Link>
+            <Button variant="ghost" className="w-full">
+              Don't have an account? <Link href="/sign-up">Sign Up</Link>
             </Button>
           </CardFooter>
         </form>
