@@ -26,6 +26,7 @@ export async function getUser(token: string) {
 }
 
 export async function signUp(prevState: unknown, formData: FormData) {
+  console.log(formData);
   try {
     const password = formData.get("password");
     const confirmPassword = formData.get("confirmPassword");
@@ -43,6 +44,7 @@ export async function signUp(prevState: unknown, formData: FormData) {
         body: formData,
       });
       const response = await data.json();
+      console.log(response);
       return {
         message: response,
         success: true,

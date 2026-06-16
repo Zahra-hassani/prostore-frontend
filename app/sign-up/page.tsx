@@ -11,13 +11,20 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React, { useActionState } from "react";
 
 function SignUpPage() {
-  const [data, func] = useActionState(signUp, {
+  const router = useRouter();
+  const [data, func, pending] = useActionState(signUp, {
     message: "",
     success: false,
   });
+  if (data.success) {
+    console.log(data.message);
+    localStorage.setItem("token", data.message.message);
+    router.push("/");
+  }
   return (
     <div className="min-h-screen w-full flex justify-center items-center">
       <Card className="w-full max-w-md">
@@ -70,11 +77,11 @@ function SignUpPage() {
               </div>
               <div className="grid gap-2">
                 <label htmlFor="phone">Phone Number</label>
-                <Input type="text" id="phone" name="phone" />
+                <Input type="text" id="phone" name="phone_number" />
               </div>
             </div>
-            <Button type="submit" className="w-full">
-              Sign Up
+            <Button disabled={pending} type="submit" className="w-full">
+              {pending ? "Signing Up" : "Sign Up"}
             </Button>
             <Button variant="ghost" className="w-full">
               Already have an account? <Link href="/sign-in">Sign In</Link>
