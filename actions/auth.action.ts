@@ -27,22 +27,31 @@ export async function getUser(token: string) {
 
 export async function signUp(prevState: unknown, formData: FormData) {
   try {
-    const data = await fetch(`http://localhost:8000/api/signup`, {
-      method: "POST",
-      headers: {
-        accept: "application/json",
-      },
-      body: formData,
-    });
-    const response = await data.json();
-    return {
-      message: response,
-      status: true,
-    };
+    const password = formData.get("password");
+    const confirmPassword = formData.get("confirmPassword");
+    if (password !== confirmPassword) {
+      return {
+        message: "Passwords does not matched",
+        success: false,
+      };
+    } else {
+      const data = await fetch(`http://localhost:8000/api/signup`, {
+        method: "POST",
+        headers: {
+          accept: "application/json",
+        },
+        body: formData,
+      });
+      const response = await data.json();
+      return {
+        message: response,
+        success: true,
+      };
+    }
   } catch (err) {
     return {
       message: "Unable to sign up user",
-      status: false,
+      success: false,
     };
   }
 }

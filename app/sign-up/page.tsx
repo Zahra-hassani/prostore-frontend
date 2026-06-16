@@ -1,3 +1,5 @@
+"use client";
+import { signUp } from "@/actions/auth.action";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -9,20 +11,21 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
-import React from "react";
+import React, { useActionState } from "react";
 
 function SignUpPage() {
+  const [data, func] = useActionState(signUp, {
+    message: "",
+    success: false,
+  });
   return (
     <div className="min-h-screen w-full flex justify-center items-center">
       <Card className="w-full max-w-md">
-        <form action="{action}">
-          <CardHeader>
-            <CardTitle className="text-xl font-bold">Sign Up</CardTitle>
-            <CardDescription className="text-sm">
-              Register your information in form below and sign up
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
+        <CardHeader>
+          <CardTitle className="text-2xl font-bold">Sign Up</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <form action={func} className="flex flex-col gap-3">
             <div className="flex flex-col gap-2">
               <div className="grid gap-2">
                 <label htmlFor="name">Your Name</label>
@@ -31,7 +34,7 @@ function SignUpPage() {
                   name="name"
                   type="text"
                   placeholder="Ali"
-                  required
+                  // required
                 />
               </div>
               <div className="grid gap-2">
@@ -41,41 +44,43 @@ function SignUpPage() {
                   name="email"
                   type="email"
                   placeholder="m@example.com"
-                  required
+                  // required
                 />
               </div>
               <div className="grid gap-2">
                 <label htmlFor="password">Password</label>
+                <Input id="password" name="password" type="password" required />
+              </div>
+              <div className="grid gap-2">
+                <label htmlFor="confirmPassword">Confirm Password</label>
                 <Input
-                  id="password"
-                  name="password"
-                  type="password"
-                  placeholder="Password"
-                  required
-                />
-                <Input
-                  id="password"
+                  id="confirmPassword"
                   name="confirmPassword"
                   type="password"
-                  placeholder="Confrim password"
-                  required
+                  // required
                 />
+                {data.message === "Passwords does not matched" &&
+                  data.success === false && (
+                    <div className="w-full">
+                      <span className="text-red-500 text-xs">
+                        {data.message}
+                      </span>
+                    </div>
+                  )}
               </div>
               <div className="grid gap-2">
                 <label htmlFor="phone">Phone Number</label>
-                <Input type="text" id="phone" name="phone" required />
+                <Input type="text" id="phone" name="phone" />
               </div>
             </div>
-          </CardContent>
-          <CardFooter className="flex-col gap-2 py-2">
             <Button type="submit" className="w-full">
               Sign Up
             </Button>
             <Button variant="ghost" className="w-full">
               Already have an account? <Link href="/sign-in">Sign In</Link>
             </Button>
-          </CardFooter>
-        </form>
+          </form>
+        </CardContent>
       </Card>
     </div>
   );
