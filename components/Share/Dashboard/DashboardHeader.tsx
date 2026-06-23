@@ -2,6 +2,7 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Bell, PanelRightOpen } from "lucide-react";
 import React from "react";
+import Theme from "../Header/Theme";
 
 function DashboardHeader({
   setShowText,
@@ -19,7 +20,7 @@ function DashboardHeader({
         </div>
         <div className="flex justify-between items-center gap-4 px-3">
           <Input type="search" placeholder="Search..." />
-          <div className="p-2 relative bg-white rounded-md border">
+          <div className="p-2 relative rounded-md border">
             <Bell size={18} />
             <p
               //   variant={`destructive`}
@@ -28,6 +29,7 @@ function DashboardHeader({
               2
             </p>
           </div>
+          <Theme />
         </div>
       </div>
       <hr />

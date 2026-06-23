@@ -17,10 +17,11 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import React from "react";
+import UserInfo from "./UserInfo";
 
 function DashboardSidebar({ showText }: { showText: boolean }) {
   return (
-    <Card className="py-1 w-fit min-h-screen flex flex-col justify-between rounded-none">
+    <Card className="py-1 w-fit h-full hidden md:flex transition-all duration-500 bg-stone-50 dark:bg-black flex-col justify-between rounded-none">
       <div className="">
         <CardHeader className="px-2 py-2">
           <CardTitle className="flex gap-2 items-center w-fit">
@@ -39,29 +40,29 @@ function DashboardSidebar({ showText }: { showText: boolean }) {
         <hr />
         <CardContent className="p-0 px-2">
           <div className="flex space-y-1x flex-col">
-            <div className="flex space-x-2 items-center w-full py-3 hover:bg-stone-50 cursor-pointer">
+            <div className="flex space-x-2 items-center w-full py-3 hover:bg-stone-200/30 dark:hover:bg-stone-50/25 cursor-pointer">
               <LayoutDashboardIcon />
               <span className={`${showText ? "block" : "hidden"}`}>
                 Dashboard
               </span>
             </div>
-            <div className="flex space-x-2 items-center w-full py-3 hover:bg-stone-50 cursor-pointer">
+            <div className="flex space-x-2 items-center w-full py-3 hover:bg-stone-200/30 dark:hover:bg-stone-50/25 cursor-pointer">
               <Package />
               <span className={`${showText ? "block" : "hidden"}`}>
                 Product
               </span>
             </div>
-            <div className="flex space-x-2 items-center w-full py-3 hover:bg-stone-50 cursor-pointer">
+            <div className="flex space-x-2 items-center w-full py-3 hover:bg-stone-200/30 dark:hover:bg-stone-50/25 cursor-pointer">
               <SquareUserRound />
               <span className={`${showText ? "block" : "hidden"}`}>
                 Customers
               </span>
             </div>
-            <div className="flex space-x-2 items-center w-full py-3 hover:bg-stone-50 cursor-pointer">
+            <div className="flex space-x-2 items-center w-full py-3 hover:bg-stone-200/30 dark:hover:bg-stone-50/25 cursor-pointer">
               <ShoppingCart />
               <span className={`${showText ? "block" : "hidden"}`}>Cart</span>
             </div>
-            <div className="flex space-x-2 items-center w-full py-3 hover:bg-stone-50 cursor-pointer">
+            <div className="flex space-x-2 items-center w-full py-3 hover:bg-stone-200/30 dark:hover:bg-stone-50/25 cursor-pointer">
               <ScanEye />
               <span className={`${showText ? "block" : "hidden"}`}>
                 Reviews
@@ -71,7 +72,9 @@ function DashboardSidebar({ showText }: { showText: boolean }) {
         </CardContent>
       </div>
       <div>
-        <CardDescription></CardDescription>
+        <CardDescription>
+          <UserInfo showText={showText} />
+        </CardDescription>
         <CardFooter className="px-1 py-2">
           <span
             className={`${showText ? "block" : "hidden"} text-xs text-muted-foreground`}

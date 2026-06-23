@@ -1,7 +1,9 @@
 import React from "react";
 import DashboardHeader from "./DashboardHeader";
+import OverAllReports from "./OverAllReports";
+import RecentOrders from "./RecentOrders";
 
-function MainContent({
+function MainSection({
   setShowText,
   showText,
 }: {
@@ -11,8 +13,12 @@ function MainContent({
   return (
     <div className="w-full">
       <DashboardHeader setShowText={setShowText} showText={showText} />
+      <div className="p-6 flex flex-col gap-4">
+        <OverAllReports />
+        <RecentOrders />
+      </div>
     </div>
   );
 }
 
-export default MainContent;
+export default MainSection;
