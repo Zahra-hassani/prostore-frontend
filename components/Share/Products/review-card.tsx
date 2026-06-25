@@ -40,9 +40,9 @@ function ReviewCard({ review }: { review: any }) {
             );
           })}
         </div>
-        <span className="text-muted-foreground mt-auto text-xs">
+        {/* <span className="text-muted-foreground mt-auto text-xs">
           {formatDistanceToNow(review.created_at)} ago
-        </span>
+        </span> */}
       </div>
     </div>
   );

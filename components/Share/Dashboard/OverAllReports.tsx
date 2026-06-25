@@ -6,6 +6,7 @@ import {
   UserCheck2Icon,
 } from "lucide-react";
 import React from "react";
+import ReviewsReport from "./ReviewsReport";
 
 function OverAllReports() {
   return (
@@ -24,19 +25,7 @@ function OverAllReports() {
             45.5% vs Previous Month
           </span>
         </div>
-        <div className="flex justify-center flex-col items-center gap-3 border-r border-gray-300">
-          <span className="flex gap-1 text-sm text-gray-500 dark:text-gray-50">
-            <Star size={18} /> Reviewed Products
-          </span>
-          <span className="text-xs text-gray-400 dark:text-gray-100">
-            400 Previous Month
-          </span>
-          <span className="font-bold text-2xl">800</span>
-          <span className="flex gap-1 text-xs text-gray-500">
-            <ArrowUpRight size={18} className="text-green-600" />
-            55.5% vs Previous Month
-          </span>
-        </div>
+        <ReviewsReport />
         <div className="flex justify-center flex-col items-center space-y-3 border-r border-gray-300">
           <span className="flex gap-1 text-sm text-gray-500 dark:text-gray-50">
             <UserCheck2Icon size={18} /> New Customers

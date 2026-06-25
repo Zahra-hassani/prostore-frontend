@@ -13,7 +13,7 @@ function MainSection({
   return (
     <div className="w-full">
       <DashboardHeader setShowText={setShowText} showText={showText} />
-      <div className="p-6 flex flex-col gap-4">
+      <div className="p-7 flex flex-col gap-4">
         <OverAllReports />
         <RecentOrders />
       </div>
