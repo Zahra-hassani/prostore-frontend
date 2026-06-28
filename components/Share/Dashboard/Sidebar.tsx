@@ -79,7 +79,7 @@ function DashboardSidebar({ showText }: { showText: boolean }) {
           <span
             className={`${showText ? "block" : "hidden"} text-xs text-muted-foreground`}
           >
-            {new Date().getFullYear()} &copy; Sharifi Programming Academy
+            {new Date().getFullYear()} @Sharifi Programming Academy
           </span>
         </CardFooter>
       </div>

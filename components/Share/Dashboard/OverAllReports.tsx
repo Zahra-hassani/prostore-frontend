@@ -1,12 +1,8 @@
-import {
-  ArrowUpRight,
-  CircleDollarSignIcon,
-  ShoppingBasket,
-  Star,
-  UserCheck2Icon,
-} from "lucide-react";
+import { ArrowUpRight, CircleDollarSignIcon } from "lucide-react";
 import React from "react";
 import ReviewsReport from "./ReviewsReport";
+import CustomersReport from "./CustomersReport";
+import ProductsReport from "./ProductsReport";
 
 function OverAllReports() {
   return (
@@ -26,32 +22,8 @@ function OverAllReports() {
           </span>
         </div>
         <ReviewsReport />
-        <div className="flex justify-center flex-col items-center space-y-3 border-r border-gray-300">
-          <span className="flex gap-1 text-sm text-gray-500 dark:text-gray-50">
-            <UserCheck2Icon size={18} /> New Customers
-          </span>
-          <span className="text-xs text-gray-400 dark:text-gray-100">
-            4000 Previous Month
-          </span>
-          <span className="font-bold text-2xl">5000</span>
-          <span className="flex gap-1 text-xs text-gray-500">
-            <ArrowUpRight size={18} className="text-green-600" />
-            40.5% vs Previous Month
-          </span>
-        </div>
-        <div className="flex justify-center flex-col items-center gap-3">
-          <span className="flex gap-1 text-sm text-gray-500 dark:text-gray-50">
-            <ShoppingBasket size={18} /> Total Products
-          </span>
-          <span className="text-xs text-gray-400 dark:text-gray-100">
-            4000 Previous Month
-          </span>
-          <span className="font-bold text-2xl">5500</span>
-          <span className="flex gap-1 text-xs text-gray-500">
-            <ArrowUpRight size={18} className="text-green-600" />
-            28.5% vs Previous Month
-          </span>
-        </div>
+        <CustomersReport />
+        <ProductsReport />
       </div>
     </div>
   );

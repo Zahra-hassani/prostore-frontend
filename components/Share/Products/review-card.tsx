@@ -24,7 +24,7 @@ function ReviewCard({ review }: { review: any }) {
         <div className="flex">
           {Array.from({ length: 5 }, (_, index) => {
             let fill =
-              Math.max(Math.min(review.rating - index * 2, 1) / 2, 0) * 100;
+              Math.max(Math.min((review.rating - index * 2) / 2, 1), 0) * 100;
             return (
               <div key={index} className="relative">
                 <span className="w-6 h-6">

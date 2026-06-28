@@ -59,9 +59,9 @@ async function page({ params }: { params: Promise<{ id: string }> }) {
         </Card>
       </div>
       <div className="w-full grid grid-cols-1 md:grid-cols-2 p-2">
-        <ProductReviews reviews={foundedReviews} limit={2} />
+        <ProductReviews reviews={foundedReviews} />
         <div>
-          <ReviewForm />
+          <ReviewForm productId={id} />
         </div>
       </div>
     </div>

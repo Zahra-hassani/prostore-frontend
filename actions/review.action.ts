@@ -7,6 +7,7 @@ export async function getReviews() {
 
 export async function addComment(previousState: unknown, formData: FormData) {
   try {
+    console.log(formData);
     const data = await fetch(`http://localhost:8000/api/reviews`, {
       headers: {
         accept: "application/json",
@@ -15,6 +16,7 @@ export async function addComment(previousState: unknown, formData: FormData) {
       body: formData,
     });
     const response = await data.json();
+    console.log(response);
     return {
       message: response,
       success: true,

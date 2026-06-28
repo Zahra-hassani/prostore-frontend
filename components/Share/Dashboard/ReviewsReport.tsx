@@ -9,6 +9,7 @@ function ReviewsReport() {
   const [previousMonthReviews, setPreviousMonthReviews] = useState<{
     reviews: number;
   }>({ reviews: 0 });
+  // get token
   const token = localStorage.getItem("token");
   useEffect(() => {
     async function getCurrentMonthReviews() {

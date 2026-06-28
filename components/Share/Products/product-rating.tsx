@@ -17,6 +17,7 @@ function ProductRating() {
             className="hidden"
             onChange={(e) => setRateNumber(Number(e.target.value))}
             value={index}
+            name="rating"
           />
           <Star
             size={36}
