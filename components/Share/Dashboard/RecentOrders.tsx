@@ -10,8 +10,8 @@ function RecentOrders() {
           <LucideSquareChevronRight /> Recent Orders
         </span>
       </div>
-      <div className="p-4">
-        <table className="text-sm w-full">
+      <div className="p-4 w-full overflow-auto">
+        <table className="text-sm md:w-full overflow-x-scroll">
           <thead>
             <tr className="border-b-2 text-left">
               <th className="p-4">Product Name</th>
@@ -28,7 +28,7 @@ function RecentOrders() {
               <td className="p-4">4</td>
               <td className="p-4">
                 <Badge
-                  className="bg-amber-100 text-amber-600"
+                  className="bg-amber-100 text-amber-600 dark:text-white dark:bg-amber-600"
                   variant="destructive"
                 >
                   Shiped
@@ -42,7 +42,7 @@ function RecentOrders() {
               <td className="p-4">1</td>
               <td className="p-4">
                 <Badge
-                  className="bg-green-100 text-green-600"
+                  className="bg-green-100 text-green-600 dark:text-white dark:bg-green-600"
                   variant="destructive"
                 >
                   Delivered
@@ -56,7 +56,7 @@ function RecentOrders() {
               <td className="p-4">1</td>
               <td className="p-4">
                 <Badge
-                  className="bg-green-100 text-green-600"
+                  className="bg-green-100 text-green-600 dark:text-white dark:bg-green-600"
                   variant="destructive"
                 >
                   Delivered
@@ -70,7 +70,7 @@ function RecentOrders() {
               <td className="p-4">1</td>
               <td className="p-4">
                 <Badge
-                  className="bg-blue-100 text-blue-600"
+                  className="bg-blue-100 text-blue-600 dark:text-white dark:bg-blue-600"
                   variant="destructive"
                 >
                   Proccessing
@@ -84,7 +84,7 @@ function RecentOrders() {
               <td className="p-4">1</td>
               <td className="p-4">
                 <Badge
-                  className="bg-blue-100 text-blue-600"
+                  className="bg-blue-100 text-blue-600 dark:text-white dark:bg-blue-600"
                   variant="destructive"
                 >
                   Proccessing
@@ -98,7 +98,7 @@ function RecentOrders() {
               <td className="p-4">2</td>
               <td className="p-4">
                 <Badge
-                  className="bg-green-100 text-green-600"
+                  className="bg-green-100 text-green-600 dark:text-white dark:bg-green-600"
                   variant="destructive"
                 >
                   Delivered

@@ -8,7 +8,7 @@ function OverAllReports() {
   return (
     <div className="w-full max-w-7xl">
       <div className="w-full grid grid-cols-1 md:grid-cols-4 gap-2 p-4 rounded-2xl border bg-white dark:bg-gray-800/65">
-        <div className="flex justify-center flex-col items-center gap-3 border-r border-gray-300">
+        <div className="flex justify-center flex-col items-center gap-3 p-1 md:border-r border-b md:border-b-0 border-gray-300">
           <span className="flex gap-1 text-sm text-gray-500 dark:text-gray-50">
             <CircleDollarSignIcon size={18} /> Monthly Revenue
           </span>

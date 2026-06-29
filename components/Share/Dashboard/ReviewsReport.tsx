@@ -41,7 +41,7 @@ function ReviewsReport() {
     getPreviousMonthReviews();
   }, []);
   return (
-    <div className="flex justify-center flex-col items-center gap-3 border-r border-gray-300">
+    <div className="flex justify-center flex-col items-center gap-3 md:border-r border-b md:border-b-0 p-1 border-gray-300">
       <span className="flex gap-1 text-sm text-gray-500 dark:text-gray-50">
         <Star size={18} /> Reviewed Products
       </span>

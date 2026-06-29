@@ -39,7 +39,7 @@ function CustomersReport() {
     getPreviousMonthCustomers();
   }, []);
   return (
-    <div className="flex justify-center flex-col items-center space-y-3 border-r border-gray-300">
+    <div className="flex justify-center flex-col items-center p-1 space-y-3 md:border-r border-b md:border-b-0 border-gray-300">
       <span className="flex gap-1 text-sm text-gray-500 dark:text-gray-50">
         <UserCheck2Icon size={18} /> New Customers
       </span>
