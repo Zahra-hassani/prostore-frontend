@@ -16,3 +16,10 @@ export async function getSingleProduct(id: string) {
   const data = await response.json();
   return data;
 }
+
+// fetch all products with details
+export async function fetchAllProducts() {
+  const data = await fetch("http://localhost:8000/api/dashboard/all-products");
+  const response = await data.json();
+  return response;
+}
