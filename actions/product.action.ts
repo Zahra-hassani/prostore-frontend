@@ -18,8 +18,8 @@ export async function getSingleProduct(id: string) {
 }
 
 // fetch all products with details
-export async function fetchAllProducts() {
-  const data = await fetch("http://localhost:8000/api/dashboard/all-products");
+export async function fetchAllProducts(url: string) {
+  const data = await fetch(url);
   const response = await data.json();
   return response;
 }
