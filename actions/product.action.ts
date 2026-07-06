@@ -23,3 +23,34 @@ export async function fetchAllProducts(url: string) {
   const response = await data.json();
   return response;
 }
+
+// save new product
+export default async function storeProduct(
+  prevState: unknown,
+  formData: FormData,
+) {
+  const data = await fetch(
+    "http://localhost:8000/api/dashboard/store-product",
+    {
+      method: "POST",
+      headers: {
+        authorization: `Bearer `,
+        accept: "application//json",
+      },
+      body: formData,
+    },
+  );
+  // if data inserted show next step
+  if (data.status === 200) {
+    console.log("Data inserted successfully");
+    return {
+      data: "data inserted successfully",
+      status: true,
+    };
+  } else {
+    return {
+      data: "something went wrong",
+      status: false,
+    };
+  }
+}
