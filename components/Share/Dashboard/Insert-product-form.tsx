@@ -1,8 +1,9 @@
 "use client";
-import storeProduct from "@/actions/product.action";
+import { storeProduct } from "@/actions/product.action";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { PackagePlusIcon } from "lucide-react";
+import { useRouter } from "next/navigation";
 import React, { useActionState } from "react";
 
 function InsertProductForm() {
@@ -10,6 +11,11 @@ function InsertProductForm() {
     data: "",
     status: false,
   });
+  if (data.status) {
+    console.log("data inserted successfully");
+    const router = useRouter();
+    router.refresh();
+  }
   return (
     <form
       action={action}

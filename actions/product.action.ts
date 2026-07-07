@@ -25,21 +25,14 @@ export async function fetchAllProducts(url: string) {
 }
 
 // save new product
-export default async function storeProduct(
-  prevState: unknown,
-  formData: FormData,
-) {
-  const data = await fetch(
-    "http://localhost:8000/api/dashboard/store-product",
-    {
-      method: "POST",
-      headers: {
-        authorization: `Bearer `,
-        accept: "application//json",
-      },
-      body: formData,
+export async function storeProduct(prevState: unknown, formData: FormData) {
+  const data = await fetch("http://localhost:8000/api/products", {
+    method: "POST",
+    headers: {
+      accept: "application/json",
     },
-  );
+    body: formData,
+  });
   // if data inserted show next step
   if (data.status === 200) {
     console.log("Data inserted successfully");
@@ -48,6 +41,7 @@ export default async function storeProduct(
       status: true,
     };
   } else {
+    console.log("Something went wrong");
     return {
       data: "something went wrong",
       status: false,
