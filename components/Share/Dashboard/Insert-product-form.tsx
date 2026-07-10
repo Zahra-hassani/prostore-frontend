@@ -72,6 +72,18 @@ function InsertProductForm() {
           <Input type="text" name="category" id="category" />
         </div>
         <div className="flex flex-col gap-2 w-full">
+          <label className="text-[15px]" htmlFor="img_url1">
+            Product image 1
+          </label>
+          <Input type="file" accept="image/*" name="img_url1" id="img_url1" />
+        </div>
+        <div className="flex flex-col gap-2 w-full">
+          <label className="text-[15px]" htmlFor="img_url2">
+            Product image 2
+          </label>
+          <Input type="file" accept="image/*" name="img_url2" id="img_url2" />
+        </div>
+        <div className="flex flex-col gap-2 w-full">
           <label className="text-[15px]" htmlFor="description">
             Description
           </label>

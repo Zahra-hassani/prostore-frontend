@@ -1,12 +1,16 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Figtree, Inter } from "next/font/google";
+// import { Figtree, Inter } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { APP_DESCRIPTION, APP_NAME } from "@/constants";
 import { ThemeProvider } from "next-themes";
 
-const figtree = Figtree({ subsets: ["latin"], variable: "--font-sans" });
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
+// const figtree = Figtree({
+//   subsets: ["latin"],
+//   variable: "--font-sans",
+//   weight: ["300", "400", "600", "700"],
+// });
+// const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
   title: {
@@ -30,11 +34,11 @@ export default function RootLayout({
         "h-full",
         "antialiased",
         "font-sans",
-        figtree.variable,
-        inter.variable,
+        // figtree.variable,
+        // inter.variable,
       )}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full font-[sans-serif] flex flex-col">
         <ThemeProvider
           attribute="class"
           enableSystem
