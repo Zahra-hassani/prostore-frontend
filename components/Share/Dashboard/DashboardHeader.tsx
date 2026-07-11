@@ -16,6 +16,7 @@ import React, { useState } from "react";
 import Theme from "../Header/Theme";
 import Image from "next/image";
 import Link from "next/link";
+import { Separator } from "@/components/ui/separator";
 
 function DashboardHeader({
   setShowText,
@@ -102,7 +103,7 @@ function DashboardHeader({
           <span>Reviews</span>
         </Link>
       </div>
-      <hr />
+      <Separator />
     </div>
   );
 }

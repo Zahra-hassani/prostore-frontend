@@ -1,5 +1,5 @@
-export async function getAllUsers() {
-  const data = await fetch("http://localhost:8000/api/dashboard/all-users");
+export async function getAllUsers(url: string) {
+  const data = await fetch(url);
   const response = await data.json();
   return response;
 }

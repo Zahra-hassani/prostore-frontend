@@ -13,26 +13,21 @@ import { Users2 } from "lucide-react";
 import React, { useEffect, useState } from "react";
 
 function AllCustomers() {
-  const [users, setUsers] = useState<
-    | {
-        id: number;
-        name: string;
-        email: string;
-        role: string;
-        phone_number: string;
-      }[]
-    | null
-  >(null);
+  const [links, setLinks] = useState([]);
+  const [users, setUsers] = useState<any>();
   useEffect(() => {
     async function getUsers() {
-      const data = await getAllUsers();
-      setUsers(data.data);
+      const data = await getAllUsers(
+        "http://localhost:8000/api/dashboard/all-users?page=1",
+      );
+      setUsers(data);
+      setLinks(data.meta.links);
     }
     getUsers();
   }, []);
   return (
     <div className="max-w-6xl w-full mx-auto flex border rounded-md flex-col">
-      <div className="border-b p-5 w-full">
+      <div className="border-b p-4 w-full">
         <span className="text-sm text-muted-foreground flex items-center gap-2">
           <Users2 /> All Customers
         </span>
@@ -51,7 +46,7 @@ function AllCustomers() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {users?.map((user) => (
+            {users?.data.map((user: any) => (
               <TableRow key={user.id}>
                 <TableCell>{user.id}</TableCell>
                 <TableCell>{user.name}</TableCell>
@@ -68,6 +63,22 @@ function AllCustomers() {
             ))}
           </TableBody>
         </Table>
+      </div>
+      <div className="w-full flex justify-center items-center gap-2 p-4">
+        {links.map((link: any) => (
+          <Button
+            variant={link.active ? "default" : "outline"}
+            onClick={() =>
+              setLinks(
+                link.url
+                  ? link.url
+                  : `http://localhost:8000/api/dashboard/all-users?page=${users.current_page}`,
+              )
+            }
+            key={link.label}
+            dangerouslySetInnerHTML={{ __html: link.label }}
+          />
+        ))}
       </div>
     </div>
   );
