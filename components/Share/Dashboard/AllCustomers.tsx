@@ -1,6 +1,7 @@
 "use client";
-import { getAllUsers } from "@/actions/customer.action";
+import { deleteUser, getAllUsers } from "@/actions/customer.action";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import {
   Table,
   TableBody,
@@ -10,9 +11,13 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Users2 } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import React, { useActionState, useEffect, useState } from "react";
 
 function AllCustomers() {
+  const [data, action] = useActionState(deleteUser, {
+    message: "",
+  });
   const [links, setLinks] = useState([]);
   const [users, setUsers] = useState<any>();
   useEffect(() => {
@@ -54,7 +59,17 @@ function AllCustomers() {
                 <TableCell>{user.role}</TableCell>
                 <TableCell>{user.phone_number}</TableCell>
                 <TableCell>
-                  <Button variant="destructive">Delete</Button>
+                  <form action={action}>
+                    <Input
+                      type="number"
+                      defaultValue={user.id}
+                      name="id"
+                      className="hidden"
+                    />
+                    <Button type="submit" variant="destructive">
+                      Delete
+                    </Button>
+                  </form>
                 </TableCell>
                 <TableCell>
                   <Button variant="secondary">Update</Button>
