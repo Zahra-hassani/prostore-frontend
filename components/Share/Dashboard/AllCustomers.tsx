@@ -1,5 +1,15 @@
 "use client";
 import { deleteUser, getAllUsers } from "@/actions/customer.action";
+import {
+  AlertDialog,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -66,9 +76,25 @@ function AllCustomers() {
                       name="id"
                       className="hidden"
                     />
-                    <Button type="submit" variant="destructive">
-                      Delete
-                    </Button>
+                    <AlertDialog>
+                      <AlertDialogTrigger asChild>
+                        <Button variant={"destructive"}>Delete</Button>
+                      </AlertDialogTrigger>
+                      <AlertDialogContent>
+                        <AlertDialogHeader>
+                          <AlertDialogTitle>Delete user</AlertDialogTitle>
+                          <AlertDialogDescription>
+                            Are you sure you want to delete {user.name}?
+                          </AlertDialogDescription>
+                        </AlertDialogHeader>
+                        <AlertDialogFooter>
+                          <AlertDialogCancel>Cancel</AlertDialogCancel>
+                          <Button type="submit" variant="destructive">
+                            Delete
+                          </Button>
+                        </AlertDialogFooter>
+                      </AlertDialogContent>
+                    </AlertDialog>
                   </form>
                 </TableCell>
                 <TableCell>
