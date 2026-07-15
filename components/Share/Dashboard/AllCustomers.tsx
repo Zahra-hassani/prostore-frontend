@@ -2,6 +2,7 @@
 import { deleteUser, getAllUsers } from "@/actions/customer.action";
 import {
   AlertDialog,
+  AlertDialogAction,
   AlertDialogCancel,
   AlertDialogContent,
   AlertDialogDescription,
@@ -11,7 +12,19 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Field, FieldGroup } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
   Table,
   TableBody,
@@ -22,6 +35,7 @@ import {
 } from "@/components/ui/table";
 import { Users2 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useActionState, useEffect, useState } from "react";
 
@@ -61,14 +75,17 @@ function AllCustomers() {
   }
 
   {
-    /* all customers */
+    /* add dashboard button */
   }
   return (
     <div className="max-w-6xl w-full mx-auto flex border rounded-md flex-col">
-      <div className="border-b p-4 w-full">
+      <div className="border-b p-4 w-full flex justify-between">
         <span className="text-sm text-muted-foreground flex items-center gap-2">
           <Users2 /> All Customers
         </span>
+        <Link href="/dashboard">
+          <Button variant={"outline"}>Dashboard</Button>
+        </Link>
       </div>
       <div className="p-5">
         <Table>
@@ -91,6 +108,7 @@ function AllCustomers() {
                 <TableCell>{user.email}</TableCell>
                 <TableCell>{user.role}</TableCell>
                 <TableCell>{user.phone_number}</TableCell>
+                {/* delete button */}
                 <TableCell>
                   <AlertDialog>
                     <AlertDialogTrigger>Delete</AlertDialogTrigger>
@@ -110,16 +128,71 @@ function AllCustomers() {
                         </AlertDialogHeader>
                         <AlertDialogFooter>
                           <AlertDialogCancel>Cancel</AlertDialogCancel>
-                          <Button type="submit" variant="destructive">
-                            Delete
-                          </Button>
+                          <AlertDialogAction type="submit">
+                            Continue
+                          </AlertDialogAction>
                         </AlertDialogFooter>
                       </form>
                     </AlertDialogContent>
                   </AlertDialog>
                 </TableCell>
+                {/* update button */}
                 <TableCell>
-                  <Button variant="secondary">Update</Button>
+                  <Dialog>
+                    <form action="">
+                      <DialogTrigger>Update</DialogTrigger>
+                      <DialogContent>
+                        <DialogHeader>
+                          <DialogTitle>Edit Profile</DialogTitle>
+                          <DialogDescription>
+                            Make changes to your profile here. Click save when
+                            you&apos;re done.
+                          </DialogDescription>
+                        </DialogHeader>
+                        <FieldGroup>
+                          <Input
+                            type="number"
+                            name="id"
+                            className="hidden"
+                            defaultValue={user.id}
+                          />
+                          <Field>
+                            <Label htmlFor="name">Name</Label>
+                            <Input
+                              type="text"
+                              name="name"
+                              id="name"
+                              defaultValue={user.name}
+                            />
+                          </Field>
+                          <Field>
+                            <Label htmlFor="email">Email</Label>
+                            <Input
+                              type="email"
+                              name="email"
+                              id="email"
+                              defaultValue={user.email}
+                            />
+                          </Field>
+                          <Field>
+                            <Label htmlFor="phoneNumber"></Label>
+                            <Input
+                              type="text"
+                              name="phone_number"
+                              id="phoneNumber"
+                              defaultValue={user.phone_number}
+                            />
+                          </Field>
+                        </FieldGroup>
+                        <DialogFooter>
+                          <DialogClose asChild>
+                            <Button variant="secondary">Cancel</Button>
+                          </DialogClose>
+                          <Button type="submit">Save Changes</Button>
+                        </DialogFooter>
+                      </DialogContent>
+                    </form>
+                  </Dialog>
                 </TableCell>
               </TableRow>
             ))}
