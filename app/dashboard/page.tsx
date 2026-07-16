@@ -1,5 +1,5 @@
 "use client";
-import MainSection from "@/components/Share/Dashboard/MainSection";
+import MainSection from "@/components/Share/Dashboard/dashboard/MainSection";
 import DashboardSidebar from "@/components/Share/Dashboard/Sidebar";
 import {
   Card,

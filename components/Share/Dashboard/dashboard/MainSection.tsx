@@ -1,5 +1,5 @@
 import React from "react";
-import DashboardHeader from "./DashboardHeader";
+import DashboardHeader from "../DashboardHeader";
 import OverAllReports from "./OverAllReports";
 import RecentOrders from "./RecentOrders";
 

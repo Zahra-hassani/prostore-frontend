@@ -1,6 +1,6 @@
 "use client";
 import DashboardHeader from "@/components/Share/Dashboard/DashboardHeader";
-import InsertProductForm from "@/components/Share/Dashboard/Insert-product-form";
+import InsertProductForm from "@/components/Share/Dashboard/Product/Insert-product-form";
 import DashboardSidebar from "@/components/Share/Dashboard/Sidebar";
 import React, { useState } from "react";
 
