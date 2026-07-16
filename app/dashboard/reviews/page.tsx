@@ -1,10 +1,10 @@
 "use client";
-import AllCustomers from "@/components/Share/Dashboard/Customer/AllCustomers";
 import DashboardHeader from "@/components/Share/Dashboard/DashboardHeader";
+import AllReviews from "@/components/Share/Dashboard/Reviews/All-reviews";
 import DashboardSidebar from "@/components/Share/Dashboard/Sidebar";
 import React, { useState } from "react";
 
-function CustomersPage() {
+function page() {
   const [showText, setShowText] = useState(true);
   return (
     <div className="w-full bg-stone-50 flex dark:bg-black">
@@ -14,11 +14,11 @@ function CustomersPage() {
       <div className="w-full">
         <DashboardHeader setShowText={setShowText} showText={showText} />
         <div className="p-7 flex flex-col min-h-[92vh] gap-4">
-          <AllCustomers />
+          <AllReviews />
         </div>
       </div>
     </div>
   );
 }
 
-export default CustomersPage;
+export default page;

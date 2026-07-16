@@ -5,6 +5,12 @@ export async function getReviews() {
   return response;
 }
 
+export async function getAllReviews(url: string) {
+  const data = await fetch(url);
+  const response = await data.json();
+  return response;
+}
+
 export async function addComment(previousState: unknown, formData: FormData) {
   try {
     console.log(formData);
