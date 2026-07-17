@@ -11,6 +11,27 @@ export async function getAllReviews(url: string) {
   return response;
 }
 
+// delete comment
+export async function deleteReview(prevState: unknown, formData: FormData) {
+  try {
+    const data = await fetch(
+      `http://localhost:8000/api/dashboard/reviews/${formData.get("id")}`,
+      {
+        method: "DELETE",
+      },
+    );
+    return {
+      message: "Review deleted successfully",
+      success: true,
+    };
+  } catch (err) {
+    return {
+      message: "Something went wrong",
+      success: false,
+    };
+  }
+}
+
 export async function addComment(previousState: unknown, formData: FormData) {
   try {
     console.log(formData);

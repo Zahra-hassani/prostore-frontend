@@ -1,6 +1,18 @@
 "use client";
-import { getAllReviews } from "@/actions/review.action";
+import { deleteReview, getAllReviews } from "@/actions/review.action";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import {
   Table,
   TableBody,
@@ -12,7 +24,8 @@ import {
 import { ScanEyeIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import React, { useActionState, useEffect, useState } from "react";
 
 function AllReviews() {
   const [url, setUrl] = useState(
@@ -47,7 +60,20 @@ function AllReviews() {
     }
     getReviews();
   }, [url]);
-  //   alt way
+
+  // delete review
+  const [data, action] = useActionState(deleteReview, {
+    message: "",
+    success: false,
+  });
+
+  // refresh the path when delete
+  const router = useRouter();
+  if (data.message === "Review deleted successfully" && data.success) {
+    router.push("/dashboard/reviews");
+  }
+
+  //   rendering before fetching data
   if (!reviews) {
     return (
       <div className="w-full max-w-6xl mx-auto flex flex-col rounded-lg border">
@@ -85,7 +111,8 @@ function AllReviews() {
               <TableHead className="font-semibold">Product</TableHead>
               <TableHead className="font-semibold">Rating</TableHead>
               <TableHead className="font-semibold">Comment</TableHead>
-              {/* <TableHead>Delete</TableHead> */}
+              <TableHead className="font-semibold">Date</TableHead>
+              <TableHead className="font-semibold">Delete</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -96,6 +123,36 @@ function AllReviews() {
                 <TableCell>{review.product_name}</TableCell>
                 <TableCell>{review.rating}</TableCell>
                 <TableCell>{review.comment}</TableCell>
+                <TableCell>{review.created_at.toString()}</TableCell>
+                <TableCell>
+                  <AlertDialog>
+                    <AlertDialogTrigger>Delete</AlertDialogTrigger>
+                    <AlertDialogContent>
+                      <form action={action}>
+                        <Input
+                          type="number"
+                          defaultValue={review.id}
+                          name="id"
+                          className="hidden"
+                        />
+                        <AlertDialogHeader>
+                          <AlertDialogTitle>
+                            Delete This comment
+                          </AlertDialogTitle>
+                          <AlertDialogDescription>
+                            Are you sure you want to delete this comment?
+                          </AlertDialogDescription>
+                        </AlertDialogHeader>
+                        <AlertDialogFooter>
+                          <AlertDialogCancel>Cancel</AlertDialogCancel>
+                          <AlertDialogAction type="submit">
+                            Continue
+                          </AlertDialogAction>
+                        </AlertDialogFooter>
+                      </form>
+                    </AlertDialogContent>
+                  </AlertDialog>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
