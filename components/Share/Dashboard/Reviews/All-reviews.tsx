@@ -21,6 +21,8 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { tz } from "@date-fns/tz";
+import { format } from "date-fns";
 import { ScanEyeIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -123,7 +125,11 @@ function AllReviews() {
                 <TableCell>{review.product_name}</TableCell>
                 <TableCell>{review.rating}</TableCell>
                 <TableCell>{review.comment}</TableCell>
-                <TableCell>{review.created_at.toString()}</TableCell>
+                <TableCell>
+                  {format(review.created_at, "PPpp", {
+                    in: tz("Asia/Kabul"),
+                  })}
+                </TableCell>
                 <TableCell>
                   <AlertDialog>
                     <AlertDialogTrigger>Delete</AlertDialogTrigger>
