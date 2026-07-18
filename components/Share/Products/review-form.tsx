@@ -13,8 +13,6 @@ type User = {
 };
 
 function ReviewForm({ productId }: { productId: string }) {
-  const path = usePathname();
-  // const productId = Number(path.split("/").slice());
   const [user, setUser] = useState<User | null>(null);
   useEffect(() => {
     const token = localStorage.getItem("token") as string;

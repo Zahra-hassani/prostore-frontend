@@ -32,6 +32,7 @@ export async function deleteReview(prevState: unknown, formData: FormData) {
   }
 }
 
+// add review
 export async function addComment(previousState: unknown, formData: FormData) {
   try {
     console.log(formData);

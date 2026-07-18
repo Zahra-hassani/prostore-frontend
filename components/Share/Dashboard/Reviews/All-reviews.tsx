@@ -69,12 +69,6 @@ function AllReviews() {
     success: false,
   });
 
-  // refresh the path when delete
-  const router = useRouter();
-  if (data.message === "Review deleted successfully" && data.success) {
-    router.push("/dashboard/reviews");
-  }
-
   //   rendering before fetching data
   if (!reviews) {
     return (
