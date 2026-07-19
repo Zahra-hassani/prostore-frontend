@@ -21,7 +21,7 @@ import UserInfo from "./UserInfo";
 
 function DashboardSidebar({ showText }: { showText: boolean }) {
   return (
-    <Card className="py-1 w-fit h-full hidden md:flex transition-all duration-500 bg-stone-50 dark:bg-black flex-col justify-between rounded-none">
+    <Card className="py-1 w-full h-full hidden md:flex transition-all duration-500 bg-stone-50 dark:bg-black flex-col justify-between rounded-none">
       <div className="">
         <CardHeader className="px-2 py-2">
           <CardTitle className="flex gap-2 items-center w-fit">

@@ -1,5 +1,5 @@
 "use client";
-import { deleteUser, getAllUsers } from "@/actions/customer.action";
+import { deleteUser, getAllUsers, updateUser } from "@/actions/customer.action";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -40,6 +40,11 @@ import { useRouter } from "next/navigation";
 import React, { useActionState, useEffect, useState } from "react";
 
 function AllCustomers() {
+  const [info, func] = useActionState(updateUser, {
+    message: "",
+    success: false,
+  });
+
   const [data, action] = useActionState(deleteUser, {
     message: "",
   });
@@ -139,7 +144,7 @@ function AllCustomers() {
                 {/* update button */}
                 <TableCell>
                   <Dialog>
-                    <form action="">
+                    <form action={func}>
                       <DialogTrigger>Update</DialogTrigger>
                       <DialogContent>
                         <DialogHeader>
