@@ -13,6 +13,7 @@ import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useActionState } from "react";
+import Cookie from "js-cookie";
 
 function SignUpPage() {
   const router = useRouter();
@@ -21,8 +22,7 @@ function SignUpPage() {
     success: false,
   });
   if (data.success) {
-    console.log(data.message);
-    localStorage.setItem("token", data.message.message);
+    Cookie.set("token", data.message.message, { expires: 7 });
     router.push("/");
   }
   return (

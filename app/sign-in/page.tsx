@@ -11,6 +11,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import Cookies from "js-cookie";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { useActionState } from "react";
@@ -21,7 +22,7 @@ export default function LoginPage() {
     success: false,
   });
   if (state.data !== "Something went wrong") {
-    localStorage.setItem("token", state.data);
+    Cookies.set("token", state.data, { expires: 7 });
   }
   if (state.success) {
     return redirect("/");

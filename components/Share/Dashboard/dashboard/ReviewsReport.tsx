@@ -1,6 +1,7 @@
 "use client";
 import { ArrowUpRight, Star } from "lucide-react";
 import React, { useEffect, useState } from "react";
+import Cookie from "js-cookie";
 
 function ReviewsReport() {
   const [currentMonthReviews, setCurrentMonthReviews] = useState<{
@@ -10,7 +11,7 @@ function ReviewsReport() {
     reviews: number;
   }>({ reviews: 0 });
   // get token
-  const token = localStorage.getItem("token");
+  const token = Cookie.get("token");
   useEffect(() => {
     async function getCurrentMonthReviews() {
       const data = await fetch(

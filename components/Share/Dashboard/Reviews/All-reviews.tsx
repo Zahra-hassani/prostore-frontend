@@ -120,7 +120,7 @@ function AllReviews() {
                 <TableCell>{review.rating}</TableCell>
                 <TableCell>{review.comment}</TableCell>
                 <TableCell>
-                  {format(review.created_at, "PPpp", {
+                  {format(review.created_at, "Ppp", {
                     in: tz("Asia/Kabul"),
                   })}
                 </TableCell>

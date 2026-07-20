@@ -1,6 +1,7 @@
 "use client";
 import { ArrowUpRight, UserCheck2Icon } from "lucide-react";
 import React, { useEffect, useState } from "react";
+import Cookie from "js-cookie";
 
 function CustomersReport() {
   const [currentMonthCustomers, setCurrentMonthCustomers] = useState<{
@@ -9,7 +10,7 @@ function CustomersReport() {
   const [previousMonthCustomers, setPreviousMonthCustomers] = useState<{
     users: number;
   }>({ users: 0 });
-  const token = localStorage.getItem("token");
+  const token = Cookie.get("token");
   useEffect(() => {
     async function getCurrentMonthCustomers() {
       const data = await fetch(
