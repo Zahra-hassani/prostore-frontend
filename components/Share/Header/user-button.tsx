@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { CircleUserIcon, CircleUserRound } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import Cookie from "js-cookie";
 
 type User = {
   id: number;
@@ -14,12 +15,12 @@ type User = {
 
 function UserButton() {
   function handleLogOut() {
-    localStorage.removeItem("token");
+    Cookie.remove("token");
     setUser(null);
   }
   const [user, setUser] = useState<User | null>(null);
   useEffect(() => {
-    const token = localStorage.getItem("token") as string;
+    const token = Cookie.get("token") as string;
     async function getUsers(): Promise<User> {
       return await getUser(token);
     }

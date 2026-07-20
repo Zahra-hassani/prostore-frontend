@@ -2,6 +2,7 @@
 import { getUser } from "@/actions/auth.action";
 import { User2Icon } from "lucide-react";
 import React, { useEffect, useState } from "react";
+import Cookie from "js-cookie";
 
 type User = {
   id: number;
@@ -13,7 +14,7 @@ type User = {
 function UserInfo({ showText }: { showText: boolean }) {
   const [user, setUser] = useState<User | null>(null);
   useEffect(() => {
-    const token = localStorage.getItem("token") as string;
+    const token = Cookie.get("token") as string;
     async function getUsers(): Promise<User> {
       return await getUser(token);
     }

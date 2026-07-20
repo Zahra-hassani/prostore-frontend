@@ -18,6 +18,7 @@ import {
 import Image from "next/image";
 import React from "react";
 import UserInfo from "./UserInfo";
+import Link from "next/link";
 
 function DashboardSidebar({ showText }: { showText: boolean }) {
   return (
@@ -40,34 +41,49 @@ function DashboardSidebar({ showText }: { showText: boolean }) {
         <hr />
         <CardContent className="p-0 px-2">
           <div className="flex space-y-1x flex-col">
-            <div className="flex space-x-2 items-center w-full py-3 hover:bg-stone-200/30 dark:hover:bg-stone-50/25 cursor-pointer">
+            <Link
+              href="/dashboard"
+              className="flex space-x-2 items-center w-full py-3 hover:bg-stone-200/30 dark:hover:bg-stone-50/25 cursor-pointer"
+            >
               <LayoutDashboardIcon />
               <span className={`${showText ? "block" : "hidden"}`}>
                 Dashboard
               </span>
-            </div>
-            <div className="flex space-x-2 items-center w-full py-3 hover:bg-stone-200/30 dark:hover:bg-stone-50/25 cursor-pointer">
+            </Link>
+            <Link
+              href="/dashboard/insert-product"
+              className="flex space-x-2 items-center w-full py-3 hover:bg-stone-200/30 dark:hover:bg-stone-50/25 cursor-pointer"
+            >
               <Package />
               <span className={`${showText ? "block" : "hidden"}`}>
                 Product
               </span>
-            </div>
-            <div className="flex space-x-2 items-center w-full py-3 hover:bg-stone-200/30 dark:hover:bg-stone-50/25 cursor-pointer">
+            </Link>
+            <Link
+              href="/dashboard/customers"
+              className="flex space-x-2 items-center w-full py-3 hover:bg-stone-200/30 dark:hover:bg-stone-50/25 cursor-pointer"
+            >
               <SquareUserRound />
               <span className={`${showText ? "block" : "hidden"}`}>
                 Customers
               </span>
-            </div>
-            <div className="flex space-x-2 items-center w-full py-3 hover:bg-stone-200/30 dark:hover:bg-stone-50/25 cursor-pointer">
+            </Link>
+            <Link
+              href="/dashboard/cart"
+              className="flex space-x-2 items-center w-full py-3 hover:bg-stone-200/30 dark:hover:bg-stone-50/25 cursor-pointer"
+            >
               <ShoppingCart />
               <span className={`${showText ? "block" : "hidden"}`}>Cart</span>
-            </div>
-            <div className="flex space-x-2 items-center w-full py-3 hover:bg-stone-200/30 dark:hover:bg-stone-50/25 cursor-pointer">
+            </Link>
+            <Link
+              href="/dashboard/reviews"
+              className="flex space-x-2 items-center w-full py-3 hover:bg-stone-200/30 dark:hover:bg-stone-50/25 cursor-pointer"
+            >
               <ScanEye />
               <span className={`${showText ? "block" : "hidden"}`}>
                 Reviews
               </span>
-            </div>
+            </Link>
           </div>
         </CardContent>
       </div>

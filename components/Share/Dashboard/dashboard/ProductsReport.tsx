@@ -1,6 +1,7 @@
 "use client";
 import { ArrowUpRight, ShoppingBasket } from "lucide-react";
 import React, { useEffect, useState } from "react";
+import Cookie from "js-cookie";
 
 function ProductsReport() {
   const [currentMonthProducts, setCurrentMonthProducts] = useState<{
@@ -10,7 +11,7 @@ function ProductsReport() {
     products: number;
   }>({ products: 0 });
   //   get token
-  const token = localStorage.getItem("token");
+  const token = Cookie.get("token");
   useEffect(() => {
     async function getCurrentMonthProducts() {
       const data = await fetch(
