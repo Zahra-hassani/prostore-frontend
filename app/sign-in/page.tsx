@@ -1,5 +1,6 @@
 "use client";
 import login from "@/actions/auth.action";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -11,6 +12,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import Cookies from "js-cookie";
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -21,10 +23,8 @@ export default function LoginPage() {
     data: "",
     success: false,
   });
-  if (state.data !== "Something went wrong") {
+  if (state.data !== "Something went wrong" && state.success) {
     Cookies.set("token", state.data, { expires: 7 });
-  }
-  if (state.success) {
     return redirect("/");
   }
   return (
@@ -40,18 +40,22 @@ export default function LoginPage() {
           <CardContent>
             <div className="flex flex-col gap-6">
               <div className="grid gap-2">
-                <label htmlFor="email">Email</label>
+                <Label htmlFor="email">Email</Label>
                 <Input
                   id="email"
                   name="email"
-                  type="email"
+                  type="text"
                   placeholder="m@example.com"
-                  required
                 />
+                {state.errors?.email.map((x: string) => (
+                  <Badge variant="destructive" key={x}>
+                    {x}
+                  </Badge>
+                ))}
               </div>
               <div className="grid gap-2">
                 <div className="flex items-center">
-                  <label htmlFor="password">Password</label>
+                  <Label htmlFor="password">Password</Label>
                   <a
                     href="#"
                     className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
@@ -59,7 +63,12 @@ export default function LoginPage() {
                     Forgot your password?
                   </a>
                 </div>
-                <Input id="password" name="password" type="password" required />
+                <Input id="password" name="password" type="password" />
+                {state.errors?.password.map((x: string) => (
+                  <Badge key={x} variant="destructive">
+                    {x}
+                  </Badge>
+                ))}
               </div>
             </div>
           </CardContent>
